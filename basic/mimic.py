@@ -46,16 +46,30 @@ import sys
 
 
 def mimic_dict(filename):
-  """Returns mimic dict mapping each word to list of words which follow it."""
-  # +++your code here+++
-  return
+  # Open input file
+  input_file = open(filename, "r")
+  read_file = input_file.read()
+  
+# Split on all whitespaces
+  splitted_list = read_file.split()
+
+# Mapping
+  mimic_dict = {}
+  for item in range(len(splitted_list)-1):
+    if splitted_list[item] not in mimic_dict.keys():
+      mimic_dict[splitted_list[item]] = [splitted_list[item+1]]
+    else:
+      mimic_dict[splitted_list[item]] += [splitted_list[item+1]]
+  print(mimic_dict)
+  
+mimic_dict('small.txt')
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
   # +++your code here+++
   return
-
+  # I gave up. Couldn't understand what the requirement was
 
 # Provided main(), calls mimic_dict() and mimic()
 def main():

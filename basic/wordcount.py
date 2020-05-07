@@ -39,6 +39,69 @@ print_words() and print_top().
 
 import sys
 
+def print_words(filename):
+  # Open input file:
+  input_file = open(filename, "r")
+  read_file = input_file.read()
+  
+  # Split on all whitespaces
+  splitted_list = read_file.split()
+
+  # Lowercase all characters
+  final_list = []
+  for word in splitted_list:
+    final_list.append(word.lower())
+
+  # Count characters' numbers of appearances
+  dict_count = {}
+  for word in final_list:
+    if word not in dict_count:
+      dict_count[word] = 1
+    else:
+      dict_count[word] += 1
+  
+  # # Sort dict
+  sorted_count = sorted(dict_count.keys())
+  for word in sorted_count:
+    print(word + " " + str(dict_count[word]))
+  
+
+# Print top 20 characters:
+def print_top(filename):
+  # Open input file:
+  input_file = open(filename, "r")
+  
+  # Split on all whitespace
+  splitted_list = []
+  for line in input_file:
+    splitted_list += line.split()
+
+  # Lowercase all characters
+  final_list = []
+  for word in splitted_list:
+    final_list.append(word.lower())
+
+  # Count characters' numbers of appearances
+  dict_count = {}
+  for word in final_list:
+    if word not in dict_count:
+      dict_count[word] = 1
+    else:
+      dict_count[word] += 1
+  
+  # Sort dict
+  def get_value(dictionary):
+    return dictionary[1]
+  sorted_count = sorted(dict_count.items(), key = get_value, reverse = True)
+  
+  # Print top 20
+  for word in sorted_count[:20]:
+    print(word[0] + " " + str(word[1]))
+  
+print_words("alice.txt")  
+print_top("alice.txt")
+
+
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
@@ -51,7 +114,7 @@ import sys
 # calls the print_words() and print_top() functions which you must define.
 def main():
   if len(sys.argv) != 3:
-    print 'usage: ./wordcount.py {--count | --topcount} file'
+    print ('usage: ./wordcount.py {--count | --topcount} file')
     sys.exit(1)
 
   option = sys.argv[1]
@@ -61,7 +124,7 @@ def main():
   elif option == '--topcount':
     print_top(filename)
   else:
-    print 'unknown option: ' + option
+    print ('unknown option: ' + option)
     sys.exit(1)
 
 if __name__ == '__main__':
