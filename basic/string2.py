@@ -59,7 +59,8 @@ def front_back(a, b):
     b_back = b[(len(b) // 2):]
   else:
     b_front = b[:((len(b) // 2)+1)]
-    b_back = b[((len(b) // 2)+1):]
+    b_back = b[((len(b) // 2)+1):] + 1
+    print('Quynh Anh xinh dep')
   return a_front + b_front + a_back + b_back
 
 
