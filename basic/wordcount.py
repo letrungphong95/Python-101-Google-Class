@@ -204,8 +204,8 @@ if len(sys.argv) != 3:
 Hoặc `python3 ./wordcount.py --topcount` sẽ chạy ra kết quả bài print_top 
 Vì vậy mình không cần phải khai báo nó ra như Quỳnh Anh làm ở bên dưới. 
 """  
-print_words("alice.txt")  
-print_top("alice.txt")
+# print_words("alice.txt")  
+# print_top("alice.txt")
 
 
 # +++your code here+++
